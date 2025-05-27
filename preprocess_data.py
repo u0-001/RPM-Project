@@ -44,6 +44,7 @@ data_processed.to_csv('C:/RPM/data/preprocessed_vitals.csv', index=False)
 
 # Verify
 print("\nPreprocessed rows:", len(data_processed))
+print("Unique patientunitstayid:", data_processed['patientunitstayid'].nunique())
 print("Columns:", data_processed.columns.tolist())
-print("Missing values:\n", data_processed[vital_columns].isnull().sum())
-print("Sample data:\n", data_processed.head())
+print("Missing values:\n", data_vitals_scaled.isnull().sum())
+print("Sample data:\n", data_processed[vital_columns].head())
