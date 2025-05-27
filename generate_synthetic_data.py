@@ -80,9 +80,7 @@ synthetic_df.to_csv('C:/RPM/data/synthetic_vitals.csv', index=False)
 
 # Combine with preprocessed data
 preprocessed_data = pd.read_csv('C:/RPM/data/preprocessed_vitals.csv')
-# Concatenate vital signs
 combined_vitals = pd.concat([preprocessed_data[vital_columns], synthetic_df], ignore_index=True)
-# Add non-vital columns for preprocessed data, NaN for synthetic
 combined_data = pd.DataFrame({
     'patientunitstayid': preprocessed_data['patientunitstayid'].tolist() + [None] * 250,
     'observationoffset': preprocessed_data['observationoffset'].tolist() + [None] * 250
