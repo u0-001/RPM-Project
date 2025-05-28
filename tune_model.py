@@ -1,3 +1,6 @@
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from tensorflow.keras import layers, models
@@ -12,8 +15,9 @@ y_val = np.load('C:/RPM/data/y_val.npy')
 
 # Tune Random Forest
 param_grid = {
-    'n_estimators': [100, 150, 200],
-    'max_depth': [10, 20, None]
+    'n_estimators': [150, 200, 250, 300],
+    'max_depth': [15, 20, 25, None],
+    'min_samples_split': [2, 3, 5]
 }
 rf = RandomForestClassifier(random_state=42)
 grid_search = GridSearchCV(rf, param_grid, cv=5, scoring='roc_auc_ovr')
